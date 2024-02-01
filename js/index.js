@@ -2,9 +2,9 @@
 let nombre = '';
 
 // Controlar que el nombre no quede en blanco 
-while (nombre === '' || nombre === null) {
+while (!nombre) {
     nombre = prompt('¡Buenos días cocinero!\n¿Cuál es tu nombre?');
-    if (nombre === '' || nombre === null) {
+    if (!nombre) {
         alert('Por favor, ingresa tu nombre.');
     }
 }
@@ -40,18 +40,6 @@ function generarTarea() {
     return tarea;
 }
 
-// Función para preguntar al usuario si quiere continuar
-function continuar() {
-    let respuesta;
-    do {
-        respuesta = prompt('¿Quieres continuar? (s/n)').toLowerCase();
-        if (respuesta !== 's' && respuesta !== 'n') {
-            alert('Por favor, ingrese "s" o "n".');
-        }
-    } while (respuesta !== 's' && respuesta !== 'n');
-    return respuesta === 's';
-}
-
 // Programa
 let seguir = true;
 while (seguir) {
@@ -61,7 +49,7 @@ while (seguir) {
         alert('¡Terminaste con todas las tareas asignadas para el día de hoy!');
         seguir = false;
     } else {
-        seguir = continuar();
+        seguir = confirm(`¿Quieres continuar?`);
     }
 }
 
